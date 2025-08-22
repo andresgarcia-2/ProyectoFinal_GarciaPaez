@@ -244,3 +244,10 @@ function eliminarPresupuesto(index) {
 function guardarEnLocalStorage() {
     localStorage.setItem('historialPresupuestos', JSON.stringify(historialPresupuestos));
 }
+
+function cargarDeLocalStorage() {
+    const datos = localStorage.getItem('historialPresupuestos');
+    if (datos) {
+        historialPresupuestos = JSON.parse(datos);
+    }
+}
