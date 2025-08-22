@@ -127,3 +127,11 @@ function mostrarServicios() {
 
     lista.innerHTML = html;
 }
+
+function calcularTotal() {
+    const total = serviciosPresupuesto.reduce((suma, servicio)=> {
+        return suma + servicio.total;
+    },0);
+
+    document.getElementById('total').textContent = total.toFixed(2);
+}
