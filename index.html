@@ -15,6 +15,53 @@
 
         <main>
             
+            <section class="formulario-section">
+                <h2>Agregar Servicio</h2>
+                <form id="formulario">
+                    <div class="campo">
+                        <label for="cliente">Nombre del Cliente:</label>
+                        <input type="text" id="cliente" value="Juan Pérez" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="servicio">Tipo de Servicio:</label>
+                        <select id="servicio" required>
+                            <option value="">Seleccione un servicio</option>
+                            <option value="pintura-interior">Pintura de Interiores - $8960/m²</option>
+                            <option value="pintura-decorativa">Pintura Decorativa - $18.400/m²</option>
+                            <option value="microcemento">Microcemento - $12.328/m²</option>
+                            <option value="empapelado">Empapelado - $9.856/m²</option>
+                            <option value="pintura-exterior">Pintura de Exteriores - $11.200/m²</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="metros">Metros Cuadrados:</label>
+                        <input type="number" id="metros" min="1" step="0.1" required>
+                    </div>
+
+                    <button type="submit">Agregar al Presupuesto</button>
+                </form>
+            </section>
+
+            <section class="presupuesto-section">
+                <div class="header-presupuesto">
+                    <h2>Presupuesto Actual</h2>
+                    <button id="limpiar-todo" class="btn-limpiar">Limpiar Todo</button>
+                </div>
+
+                <div id="lista-servicios"></div>
+
+                <div class="total-section">
+                    <h3>Total: $<span id="total">0.00</span></h3>
+                    <button id="guardar" class="btn-guardar">Guardar Presupuesto</button>
+                </div>
+            </section>
+
+            <section class="historial-section">
+                <h2>Historial de Presupuestos</h2>
+                <div id="historial"></div>
+            </section>
         </main>
     </div>
 
