@@ -152,4 +152,5 @@ function editarServicio(index) {
     document.getElementById('servicio').value = servicio.tipo;
     document.getElementById('metros').value = servicio.metros;
     
+    eliminarServicio(index);
 }
