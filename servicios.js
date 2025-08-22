@@ -154,3 +154,8 @@ function editarServicio(index) {
     
     eliminarServicio(index);
 }
+
+function limpiarFormulario() {
+    document.getElementById('metros').value = '';
+    document.getElementById('servicio').value = '';
+}
