@@ -135,3 +135,12 @@ function calcularTotal() {
 
     document.getElementById('total').textContent = total.toFixed(2);
 }
+
+function eliminarServicio(index) {
+    if(confirm('¿Estás seguro de que quieres eliminar este servicio?')) {
+        serviciosPresupuesto.splice(index, 1);
+        mostrarServicios();
+        calcularTotal();
+        alert('Servicio eliminado correctamente')
+    }
+}
