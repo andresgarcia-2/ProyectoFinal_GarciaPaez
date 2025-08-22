@@ -47,3 +47,8 @@ function Servicio(cliente, tipo, metros) {
     this.precioPorMetro = datosServicio.precio;
     this.total = this.metros * this.precioPorMetro;
 }
+
+let serviciosPresupuesto = [];
+
+let historialPresupuestos = [];
+
