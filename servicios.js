@@ -240,3 +240,7 @@ function eliminarPresupuesto(index) {
         alert('Presupuesto eliminado del historial');
     }
 }
+
+function guardarEnLocalStorage() {
+    localStorage.setItem('historialPresupuestos', JSON.stringify(historialPresupuestos));
+}
