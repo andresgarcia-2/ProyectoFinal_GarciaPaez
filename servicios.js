@@ -52,3 +52,46 @@ let serviciosPresupuesto = [];
 
 let historialPresupuestos = [];
 
+// Función para agregar servicio al presupuesto
+function agregarServicio() {
+    try {
+        const cliente = document.getElementById('cliente').value.trim();
+        const tipo = document.getElementById('servicio').value;
+        const metros = parseFloat(document.getElementById('metros').value);
+
+        // Validaciones
+        if (!cliente) {
+            alert('Por favor ingresa el nombre del cliente');
+            return;
+        }
+
+        if (!tipo) {
+            alert('Por favor selecciona un tipo de servicio');
+            return;
+        }
+
+        if (!metros || metros <= 0) {
+            alert('Por favor ingresa una cantidad válida de metros cuadrados');
+            return;
+        }
+
+        if (metros > 1000) {
+            alert('Los metros cuadrados no pueden exceder 1000 m²');
+            return;
+        }
+
+        // Crear nuevo servicio
+        const nuevoServicio = new Servicio(cliente, tipo, metros);
+        serviciosPresupuesto.push(nuevoServicio);
+
+        // Actualizar vista
+        mostrarServicios();
+        calcularTotal();
+        limpiarFormulario();
+
+        alert('Servicio agregado correctamente');
+
+    } catch (error) {
+        alert('Error al agregar el servicio: ' + error.message);
+    }
+}
