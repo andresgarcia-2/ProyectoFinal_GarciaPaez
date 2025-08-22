@@ -144,3 +144,7 @@ function eliminarServicio(index) {
         alert('Servicio eliminado correctamente')
     }
 }
+
+function editarServicio(index) {
+    const servicio = serviciosPresupuesto[index];
+}
