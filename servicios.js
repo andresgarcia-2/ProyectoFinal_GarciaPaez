@@ -159,3 +159,17 @@ function limpiarFormulario() {
     document.getElementById('metros').value = '';
     document.getElementById('servicio').value = '';
 }
+
+function limpiarTodo() {
+    if (serviciosPresupuesto.length === 0) {
+        alert('No hay servicios para limpiar');
+        return;
+    }
+
+    if (confirm('¿Estás seguro de que quieres eliminar todos los servicios del presupuesto?')) {
+        serviciosPresupuesto = [];
+        mostrarServicios();
+        calcularTotal();
+        alert('Presupuesto limpiado correctamente');
+    }
+}
