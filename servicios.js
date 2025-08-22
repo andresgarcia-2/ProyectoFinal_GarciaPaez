@@ -221,3 +221,22 @@ function mostrarHistorial() {
                     <div>
                         <div class="presupuesto-total">$${presupuesto.total.toFixed(2)}</div>
                         <button class="btn-eliminar-presupuesto" onclick="eliminarPresupuesto(${index})">
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    historial.innerHTML = html;
+}
+
+function eliminarPresupuesto(index) {
+    if (confirm('¿Estás seguro de que quieres eliminar este presupuesto?')) {
+        historialPresupuestos.splice(index, 1);
+        guardarEnLocalStorage();
+        mostrarHistorial();
+        alert('Presupuesto eliminado del historial');
+    }
+}
