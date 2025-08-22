@@ -251,3 +251,17 @@ function cargarDeLocalStorage() {
         historialPresupuestos = JSON.parse(datos);
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    cargarDeLocalStorage();
+    mostrarHistorial();
+    
+    document.getElementById('formulario').addEventListener('submit', function(e) {
+        e.preventDefault();
+        agregarServicio();
+    });
+
+    document.getElementById('limpiar-todo').addEventListener('click', limpiarTodo);
+    
+    document.getElementById('guardar').addEventListener('click', guardarPresupuesto);
+});
