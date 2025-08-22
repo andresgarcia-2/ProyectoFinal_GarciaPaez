@@ -33,3 +33,17 @@ function obtenerServicio(tipoServicio) {
 function obtenerTodosLosServicios() {
     return serviciosData;
 }
+
+
+function Servicio(cliente, tipo, metros) {
+    this.id = Date.now() + Math.random();
+    this.cliente = cliente;
+    this.tipo = tipo;
+    this.metros = metros;
+    this.fecha = new Date().toLocaleDateString();
+
+    const datosServicio = obtenerServicio(tipo);
+    this.nombre = datosServicio.nombre;
+    this.precioPorMetro = datosServicio.precio;
+    this.total = this.metros * this.precioPorMetro;
+}
