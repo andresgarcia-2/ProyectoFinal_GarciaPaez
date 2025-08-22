@@ -173,3 +173,28 @@ function limpiarTodo() {
         alert('Presupuesto limpiado correctamente');
     }
 }
+
+function guardarPresupuesto() {
+    if (serviciosPresupuesto.length === 0) {
+        alert('No hay servicios para guardar');
+        return;
+    }
+
+    const presupuesto = {
+        id: Date.now(),
+        fecha: new Date().toLocaleDateString(),
+        cliente: serviciosPresupuesto [0].cliente,
+        servicios: [...serviciosPresupuesto],
+        total: serviciosPresupuesto.reduce((suma, servicio) => suma + servicio.total, 0)
+    };
+
+    historialPresupuestos.push(presupuesto);
+    guardarEnLocalStorage();
+    mostrarHistorial();
+    
+    serviciosPresupuesto = [];
+    mostrarServicios();
+    calcularTotal();
+    
+    alert('Presupuesto guardado correctamente en el historial');
+}
