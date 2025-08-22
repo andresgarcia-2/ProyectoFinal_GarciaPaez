@@ -147,4 +147,9 @@ function eliminarServicio(index) {
 
 function editarServicio(index) {
     const servicio = serviciosPresupuesto[index];
+
+    document.getElementById('cliente').value = servicio.cliente;
+    document.getElementById('servicio').value = servicio.tipo;
+    document.getElementById('metros').value = servicio.metros;
+    
 }
