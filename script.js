@@ -60,3 +60,43 @@ function Servicio(cliente, tipo, metros) {
     this.precioPorMetro = datosServicio.precio;
     this.total = this.metros * this.precioPorMetro;
 }
+
+function agregarServicio() {
+    try {
+        const cliente = document.getElementById('cliente').value.trim();
+        const tipo = document.getElementById('servicio').value;
+        const metros = parseFloat(document.getElementById('metros').value);
+
+        // Validaciones con SweetAlert
+        if (!cliente) {
+            mostrarNotificacion('Por favor ingresa el nombre del cliente', 'error');
+            return;
+        }
+
+        if (!tipo) {
+            mostrarNotificacion('Por favor selecciona un tipo de servicio', 'error');
+            return;
+        }
+
+        if (!metros || metros <= 0) {
+            mostrarNotificacion('Por favor ingresa una cantidad válida de metros cuadrados', 'error');
+            return;
+        }
+
+        if (metros > 1000) {
+            mostrarNotificacion('Los metros cuadrados no pueden exceder 1000 m²', 'error');
+            return;
+        }
+
+        const nuevoServicio = new Servicio(cliente, tipo, metros);
+        serviciosPresupuesto.push(nuevoServicio);
+
+        mostrarServicios();
+        calcularTotal();
+        limpiarFormulario();
+        mostrarNotificacion('Servicio agregado correctamente', 'success');
+
+    } catch (error) {
+        mostrarNotificacion('Error al agregar el servicio: ' + error.message, 'error');
+    }
+}
