@@ -174,9 +174,61 @@ function editarServicio(index) {
     mostrarServicios();
     calcularTotal();
     mostrarNotificacion('Servicio cargado para edición', 'success');
+}
 
 
-}function limpiarFormulario() {
+function limpiarFormulario() {
     document.getElementById('metros').value = '';
     document.getElementById('servicio').value = '';
+}
+
+
+function limpiarTodo() {
+    if (serviciosPresupuesto.length === 0) {
+        mostrarNotificacion('No hay servicios para limpiar', 'error');
+        return;
+    }
+    
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¿Quieres eliminar todos los servicios del presupuesto?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e74c3c',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, limpiar todo',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            serviciosPresupuesto = [];
+            mostrarServicios();
+            calcularTotal();
+            mostrarNotificacion('Presupuesto limpiado correctamente', 'success');
+        }
+    });
+}
+
+function guardarPresupuesto() {
+    if (serviciosPresupuesto.length === 0) {
+        mostrarNotificacion('No hay servicios para guardar', 'error');
+        return;
+    }
+
+    const presupuesto = {
+        id: Date.now(),
+        fecha: new Date().toLocaleDateString(),
+        cliente: serviciosPresupuesto.cliente,
+        servicios: [...serviciosPresupuesto],
+        total: serviciosPresupuesto.reduce((suma, servicio) => suma + servicio.total, 0)
+    };
+
+    historialPresupuestos.push(presupuesto);
+    guardarEnLocalStorage();
+    mostrarHistorial();
+    
+    serviciosPresupuesto = [];
+    mostrarServicios();
+    calcularTotal();
+    
+    mostrarNotificacion('Presupuesto guardado correctamente en el historial', 'success');
 }
