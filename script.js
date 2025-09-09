@@ -1,3 +1,7 @@
+let serviciosDisponibles = [];
+let serviciosPresupuesto = [];
+let historialPresupuestos = [];
+
 async function cargarServicios() {
     try {
         const response = await fetch('servicios.json');
