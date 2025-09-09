@@ -161,3 +161,22 @@ function eliminarServicio(index) {
         }
     });
 }
+
+function editarServicio(index) {
+    const servicio = serviciosPresupuesto[index];
+
+    document.getElementById('cliente').value = servicio.cliente;
+    document.getElementById('servicio').value = servicio.tipo;
+    document.getElementById('metros').value = servicio.metros;
+    
+    // Eliminar el servicio para que se pueda agregar editado
+    serviciosPresupuesto.splice(index, 1);
+    mostrarServicios();
+    calcularTotal();
+    mostrarNotificacion('Servicio cargado para edición', 'success');
+
+
+}function limpiarFormulario() {
+    document.getElementById('metros').value = '';
+    document.getElementById('servicio').value = '';
+}
