@@ -232,3 +232,35 @@ function guardarPresupuesto() {
     
     mostrarNotificacion('Presupuesto guardado correctamente en el historial', 'success');
 }
+
+function mostrarHistorial() {
+    const historial = document.getElementById('historial');
+    
+    if (historialPresupuestos.length === 0) {
+        historial.innerHTML = '<p class="mensaje-vacio">No hay presupuestos guardados</p>';
+        return;
+    }
+    let html = '';
+    
+    historialPresupuestos.forEach((presupuesto, index) => {
+        html += `
+            <div class="presupuesto-guardado">
+                <div class="presupuesto-header">
+                    <div>
+                        <strong>Cliente: ${presupuesto.cliente}</strong>
+                        <div class="presupuesto-fecha">Fecha: ${presupuesto.fecha}</div>
+                        <div>Servicios: ${presupuesto.servicios.length}</div>
+                    </div>
+                    <div>
+                        <div class="presupuesto-total">$${presupuesto.total.toFixed(2)}</div>
+                        <button class="btn-eliminar-presupuesto" onclick="eliminarPresupuesto(${index})">
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    historial.innerHTML = html;
+}
