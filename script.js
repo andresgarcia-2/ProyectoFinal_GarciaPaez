@@ -27,3 +27,15 @@ async function cargarServicios() {
         }).showToast();
     }
 }
+
+function llenarSelectServicios() {
+    const select = document.getElementById('servicio');
+    select.innerHTML = '<option value="">Seleccione un servicio</option>';
+
+    serviciosDisponibles.forEach((servicio) => {
+        const option = document.createElement('option');
+        option.value = servicio.id;
+        option.textContent = `${servicio.nombre} - $${servicio.precio}/m²`;
+        select.appendChild(option);
+    });
+}
