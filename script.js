@@ -264,3 +264,23 @@ function mostrarHistorial() {
 
     historial.innerHTML = html;
 }
+
+function eliminarPresupuesto(index) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¿Quieres eliminar este presupuesto del historial?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e74c3c',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            historialPresupuestos.splice(index, 1);
+            guardarEnLocalStorage();
+            mostrarHistorial();
+            mostrarNotificacion('Presupuesto eliminado del historial', 'success');
+        }
+    });
+}
