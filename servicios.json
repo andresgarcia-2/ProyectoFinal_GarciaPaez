@@ -52,14 +52,12 @@ let serviciosPresupuesto = [];
 
 let historialPresupuestos = [];
 
-// Función para agregar servicio al presupuesto
 function agregarServicio() {
     try {
         const cliente = document.getElementById('cliente').value.trim();
         const tipo = document.getElementById('servicio').value;
         const metros = parseFloat(document.getElementById('metros').value);
 
-        // Validaciones
         if (!cliente) {
             alert('Por favor ingresa el nombre del cliente');
             return;
@@ -80,11 +78,9 @@ function agregarServicio() {
             return;
         }
 
-        // Crear nuevo servicio
         const nuevoServicio = new Servicio(cliente, tipo, metros);
         serviciosPresupuesto.push(nuevoServicio);
 
-        // Actualizar vista
         mostrarServicios();
         calcularTotal();
         limpiarFormulario();
