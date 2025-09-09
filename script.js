@@ -43,3 +43,7 @@ function llenarSelectServicios() {
         select.appendChild(option);
     });
 }
+
+function obtenerServicio(id) {
+    return serviciosDisponibles.find(servicio => servicio.id === id);
+}
