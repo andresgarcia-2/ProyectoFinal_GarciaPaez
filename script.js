@@ -100,3 +100,36 @@ function agregarServicio() {
         mostrarNotificacion('Error al agregar el servicio: ' + error.message, 'error');
     }
 }
+
+function mostrarServicios() {
+    const lista = document.getElementById('lista-servicios');
+    
+    if (serviciosPresupuesto.length === 0) {
+        lista.innerHTML = '<p class="mensaje-vacio">No hay servicios agregados al presupuesto</p>';
+        return;
+    }
+
+    let html = '';
+    
+    serviciosPresupuesto.forEach((servicio, index) => {
+        html += `
+            <div class="servicio-item">
+                <div class="servicio-header">
+                    <div>
+                        <div class="servicio-info">Cliente: ${servicio.cliente}</div>
+                        <div class="servicio-detalles">
+                            ${servicio.nombre} - ${servicio.metros} m² × $${servicio.precioPorMetro}
+                        </div>
+                    </div>
+                    <div class="servicio-precio">$${servicio.total.toFixed(2)}</div>
+                </div>
+                <div class="servicio-acciones">
+                    <button class="btn-editar" onclick="editarServicio(${index})">Editar</button>
+                    <button class="btn-eliminar" onclick="eliminarServicio(${index})">Eliminar</button>
+                </div>
+            </div>
+        `;
+    });
+
+    lista.innerHTML = html;
+}
