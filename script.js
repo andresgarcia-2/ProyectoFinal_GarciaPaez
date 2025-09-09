@@ -133,3 +133,31 @@ function mostrarServicios() {
 
     lista.innerHTML = html;
 }
+
+function calcularTotal() {
+    const total = serviciosPresupuesto.reduce((suma, servicio) => {
+        return suma + servicio.total;
+    }, 0);
+
+    document.getElementById('total').textContent = total.toFixed(2);
+}
+
+function eliminarServicio(index) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¿Quieres eliminar este servicio del presupuesto?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e74c3c',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            serviciosPresupuesto.splice(index, 1);
+            mostrarServicios();
+            calcularTotal();
+            mostrarNotificacion('Servicio eliminado correctamente', 'success');
+        }
+    });
+}
